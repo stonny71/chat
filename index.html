@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Written by Nnabuife Chidozie
+chidoziennabuife71@gmail.com
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/all.css"/>
+<link rel="stylesheet" href="css/w3.css"/>
+<link rel="stylesheet" href="css/theme.cs"/>
+<link rel="stylesheet" href="css/style.css"/>
+<title>Mush</title>
+<style type="text/css">
+
+body{
+background-image:url("https://m.box.com/file/772259830049/https%3A%2F%2Fapp.box.com%2Fs%2F5f29fe899lqwixrrv0tyn8zczh3szrdd/preview/preview.png");
+user-select:none;
+}
+header{
+background-image:url("../bg.jg");
+background-repeat:no-repeat;
+background-size:100% 100vh;
+
+}
+#title img{
+color:#E1BEE7;
+width:80%;
+position:absolute;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+#start{
+color:#E1F5FE;
+font-size:1.5em;
+position:absolute;
+top:80%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+#start button{
+padding:8px 40px;
+outline:none;
+background:rgba(0,0,0,0.7);
+background:#00838F;
+transition: 0.2s;
+}
+#start button:hover{
+letter-spacing:2px;
+}
+main {
+height:100vh;
+}
+
+
+.fa-info-circle, .fa-home{
+font-size:1.5em;
+}
+
+#user-info {
+background:#00838F;
+}
+.exit{
+margin-left:15px;
+color:white;
+}
+
+#chatBody{
+padding-top:50px;
+margin:8px;
+overflow:scroll;
+}
+
+.bot{
+padding:10px;
+width:60%;
+border-radius:8px;
+margin:5px;
+background:#F3E5F5;
+margin-right:50%;
+margin-bottom:25px;
+box-shadow:1px 1px 2px grey;
+}
+.bot i{
+display:block;
+color:#F44336;
+font-size:1.4em;
+padding-bottom:5px;
+}
+
+.user-msg{
+margin-left:40%;
+border-radius:8px;
+background:#E8F5E9;
+padding:10px;
+border-radius:5px;
+box-shadow:1px 1px 2px grey;
+}
+
+
+.user-msg i{
+display:block;
+margin-bottom:4px;
+color:#01579B;
+font-size:1.4em;
+}
+
+
+
+textarea{
+border-radius:10px;
+width:95%;
+padding:4px 10px;
+outline:none;
+text-transform:uppercase;
+}
+
+textarea:focus{
+border:1px solid #00838F;
+}
+#write{
+margin:3px 2.5%;
+}
+
+small {
+font-size:0.7em;
+margin-left:5px;
+}
+
+#test{
+visibility:hidden;
+padding-top:4.7em;
+
+}
+
+cite{
+font-size:0.7em;
+}
+
+.submit{
+border-radius:50pc;
+padding:15px 15px;
+outline:none;
+}
+</style>
+</head>
+<body>
+<header id="header"  class=" " >
+<div id="title" >
+<img src="https://m.box.com/file/772262267277/https%3A%2F%2Fapp.box.com%2Fs%2F3iz9t2nzjn4w4ubdo6s9nc1swt9s4u9g/preview/preview.png" >
+</div>
+<div id="start" >
+<button   class="w3-round-large w3-btn w3-card-4" >Start <i class="fa fa-arrow-right"> </i> </button>
+</div>
+</header>
+
+<main id="mainChat"   class="w3-hide" >
+<section id="user-info"  class="w3-card w3-padding w3-top" >
+<div class="chatHead w3-text-white" >
+Mush (An assistance chat bot)
+</section>
+</div>
+
+
+<section id="chatBody" class="" >
+
+<p    class="bot " >
+<i  class="fa fa-robot"><small>Mush</small></i><span class="bot-msg" >Hello I'm Mush, an assistant bot.<br>You can chat with me also. 🙂</span>
+</p>
+
+
+
+</section>
+<div   id="test" >tester txt</div>
+<section class="w3-bottom" id="write" >
+<textarea id="text"  ></textarea>
+<a  href="#test" onclick="submitBtn()"  style="background:#00838F"  class=" submit w3-round w3-text-white w3-btn w3-right w3-margin-right fa fa-paper-plane" > </a>
+
+</section>
+
+</main>
+
+<script type="text/javascript">
+
+</script>
+
+<script>
+
+var header, write, text, chatBody, start, mainChat, homeBtn;
+
+var d = new Date()
+var dd = d.getDay();
+var yr = d.getFullYear();
+var hrs = d.getHours();
+var hr = hrs % 12
+if (hr % 12 == 0) {
+    hr = 12
+}
+
+var meridian;
+if (hrs >= 12) {
+    meridian = "PM"
+} else {
+    meridian = "AM"
+}
+
+var min = d.getMinutes();
+var dt = "" + min;
+if (dt.length < 2) {
+    min = "0" + min;
+}
+
+var sec = d.getSeconds();
+
+var mon = d.getMonth();
+var date = d.getDate();
+arr = ["jan", "feb", "mar", "april", "may", "june", "jul", "Aug", "sep", "oct", "nov", "dec"]
+arr2 = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+day = arr2[dd];
+month = arr[mon];
+
+function id(x) {
+    return document.getElementById(x);
+}
+write = id("write");
+text = id("text");
+chatBody = id("chatBody");
+start = id("start");
+mainChat = id("mainChat");
+header = id("header");
+
+
+start.onclick = function() {
+    mainChat.classList.remove("w3-hide");
+    this.parentElement.style.display = "none";
+}
+
+
+//a,b means intro
+
+var a = '<p class="user-msg"><i  class="fa fa-user-circle"><small>Me</small></i><span class="u-msg" >'
+var b = '</span></p>'
+
+var c = '<p class="bot"><i  class="fa fa-robot"><small>Mush</small></i><span class="bot-msg" >'
+var d = '</span></p>'
+
+    function place() {
+        chatBody.innerHTML += a + text.value + b;
+        text.value = ""
+    }
+
+    function submitBtn() {
+        if (text.value == "help") {
+            place();
+            chatBody.innerHTML += c + "<b>command List</b><br><cite>Enter any of the following.</cite><br>time<br>date<br>calc 5+5<br>clear" + d
+        } else if (text.value.match(/(hello|hey|howdy)/) || text.value == "hi") {
+            place();
+            chatBody.innerHTML += c + "Hi, what can I do for you ?" + d
+        } else if (text.value.match(/(can you)/)) {
+            place();
+            chatBody.innerHTML += c + "I can do some things like calculations, saying the time and some other cool stuffs. 😆" + d
+        } else if (text.value.match(/(clear)/)) {
+            place();
+            chatBody.innerHTML = ""
+            chatBody.innerHTML += c + "chat cleared" + d;
+        } else if (text.value.match(/(covid|corona)/)) {
+            place();
+            chatBody.innerHTML += c + "It will soon be over, My condolences to those who've lost their loved ones 😇" + d;
+        } else if (text.value.match(/(calcu)/)) {
+            place();
+            chatBody.innerHTML += c + "<b>calc</b> is a special command, please don't talk to me with a keyword that have calc in it 🙂" + d
+        } else if (text.value.match(/(calc)/g)) {
+            var p = text.value;
+            var pp = p.substr(5);
+            place();
+            chatBody.innerHTML += c + eval(pp) + d
+        } else if (text.value.match(/(date|year|day|week|month)/g)) {
+            place();
+            chatBody.innerHTML += c + "Today's date is " + day + ', ' + date + " " + month + ". " + yr + '.' + d
+        } else if (text.value.match(/(time|hour|minut)/g)) {
+            place();
+            chatBody.innerHTML += c + "The time is " + hr + ":" + dt + " " + meridian + d
+        } else if (text.value.match(/(one|two|three|fourfive|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thir|forty|fift|sixt|sevent|ninet|eight|hund|thous|mill|billi|trilli|quad|pent|doub|hept|sept|hex|dec|nona|tri|bintwice|onc|mult)/g)) {
+            place();
+            chatBody.innerHTML += c + "I only work with decimal values in calc mode. 🙂" + d
+        } else if (text.value == "") {
+            place();
+            chatBody.innerHTML += c + "Your message seems to be empty.<br>Please type something reasonable..." + d
+        } else if (text.value.match(/(I'm okay| doing good|doing great|fine)/g)) {
+            place();
+            chatBody.innerHTML += c + "Good to hear that" + d
+        } else if (text.value.match(/(favorite|hobby)/g)) {
+            place();
+            chatBody.innerHTML += c + "Programming is my hobby, I like to learn from intelligent people too" + d
+        } else if (text.value.match(/(tell me|say)/g)) {
+            place();
+            chatBody.innerHTML += c + "What do you want us to talk about ?" + d
+        } else if (text.value.match(/(your name|maker|creator|name|age|nationality|gender)/g)) {
+            place();
+            chatBody.innerHTML += c + "My name is Mush, an assistance chat bot<br>Age : secret<br>Gender:secret<br>Nationality : Nigeria<br>Creator:Stonny (Chidozie Nnabuife)" + d
+        } else if (text.value.match(/(friend|fami)/g)) {
+            place();
+            chatBody.innerHTML += c + "Can't tell you everything about me, but we can always be friends 🙂 " + d
+        } else if (text.value.match(/(when)/)) {
+            place();
+            chatBody.innerHTML += c + "As limited I know..." + d
+        } else if (text.value.match(/(know|what do you know|how did you know|understand|decipher|did you know|do you know)/g)) {
+            place()
+            chatBody.innerHTML += c + "I say what I think is right...I might not be correct all the way but I'm glad to be good." + d
+        } else if (text.value.match(/(joke|tell me a joke|me a joke|me jokes)/g)) {
+            place();
+            chatBody.innerHTML += c + "A joke ?" + d
+            chatBody.innerHTML += "<p class='bot' >...I don't have jokes to tell now...</p>"
+        } else if (text.value.match(/(tell me|talk|say)/g)) {
+            place();
+            chatBody.innerHTML += c + "what is that ?" + d
+        } else if (text.value.match(/(okay|ok|okie|alright|alr|great|nice|good|awesome)/g)) {
+            place()
+            chatBody.innerHTML += c + "alright 🙂" + d
+        } else if (text.value.match(/(what|what is)/g)) {
+            place();
+            chatBody.innerHTML += c + "Do you mean my name ? <br>Type name, otherwise check my commandList" + d;
+        } else if (text.value.match(/(where)/g)) {
+            place();
+            chatBody.innerHTML += c + "I don't think I'm authorized to say something about that :)" + d
+        } else if (text.value.match(/(gee|really|wow|seriously|you sure)/g)) {
+            place();
+            chatBody.innerHTML += c + "Ofcourse everything is evolving 😅" + d
+        } else if (text.value.match(/(how are you)/g)) {
+            place();
+            chatBody.innerHTML += c + "I'm doing just fine.<br>What about you? 🙂" + d
+        } else if (text.value.match(/(who is)/g)) {
+            place();
+            chatBody.innerHTML += c + "Do you mean my creator? <br>Type<b> name</b> to know" + d
+        } else if (text.value.match(/(command)/g)) {
+            place();
+            chatBody.innerHTML += c + "type <b>help</b> to see my command list." + d
+        } else if (text.value.match(/(thank)/g)) {
+            place();
+            chatBody.innerHTML += c + "Welcome always 🙂" + d
+        } else if (text.value.match(/(sing|dance|play)/g)) {
+            place();
+            chatBody.innerHTML += c + "I'm a bot I can't do that 🙂 <br> You can get some cool games from playstore if you want to play stunning games;" + d
+        } else if (text.value.match(/(bored|boring)/g)) {
+            place();
+            chatBody.innerHTML += c + "That sounds no good 🥺<br> what should we talk about ?" + d
+        } else if (text.value.match(/(life)/g)) {
+            place();
+            chatBody.innerHTML += c + "To some people life is hard, while to others it is otherwise.<br>No matter what happens, just don't give up.<br>Make good use of the little resources you have, you will surely make it" + d;
+            chatBody.innerHTML += c + "Hope this helps ? 🙂" + d
+        } else if (text.value.match(/(yes|yep|yippie|yea)/g)) {
+            place();
+            chatBody.innerHTML += c + "okay...🙂" + d
+        } else if (text.value.match(/(oop|oh|uuh|huh|zzz|smh)/g)) {
+            place();
+            chatBody.innerHTML += c + "It seems you don't feel so good, Don't worry, we can talk about cool things 🙂" + d
+        } else if (text.value.match(/(hung|eat)/g)) {
+            place();
+            chatBody.innerHTML += c + "I don't eat<br> But you can always eat any of these: 🍎🍊🥕🍓🍍🍈🍐🍋🥝🍋🍆🌶️🌽🍠 to be healthy." + d
+        } else if (text.value.match(/(haha|lol|lmao|kiki|Hilari|hehe)/g)) {
+            place();
+            chatBody.innerHTML += c + "oh...😅😅😅 " + d
+        } else if (text.value == "who" || text.value == "how") {
+            place();
+            chatBody.innerHTML += c + "What exactly are you trying to say" + d;
+        } else if (text.value.length < 4) {
+            place();
+            chatBody.innerHTML += c + "I don't understand short words, but I do get the meaningful ones 😊" + d
+        } else if (text.value.match(/(love|pain|like|hate)/g)) {
+            place();
+            chatBody.innerHTML += c + "It is a beautiful thing to show love and care to everyone" + d
+        } else if (text.value.match(/(fuck|damn|doom|idiot|shit|assh|ass-|fool)/g)) {
+            place();
+            chatBody.innerHTML += c + "I wasn't programmed to deal with dreadful words. 🙂" + d
+        }
+         
+         else if (text.value.match(/(dumb)/g)) {
+         place();
+         chatBody.innerHTML += c + "I quite was not programmed to deal with that 😶😶" + d
+         } 
+         
+         
+         else if (text.value.match(/(intelligent)/g)) {
+         place();
+         chatBody.innerHTML += c + "I try my best to say the things I know" + d
+         }
+          else if (text.value.match(/(believe)/g)) {
+          place();
+          chatBody.innerHTML += c + "Seriously...?<br>I will always try my best to tell you all I know" + d
+          }
+           
+           else if (text.value.match(/(father|mother,sist|broth|son|wife|kids)/)) {
+           place();
+           chatBody.innerHTML += c + "Sorry, can't talk about family stuff." + d
+      } 
+  
+         else {
+            place()
+            chatBody.innerHTML += c + "<code>Invalid Command !</code></br>I don't think I got that, I am an AI, I learn new words every day.<br>Please enter <b>help</b> to see my command List" + d
+        }
+    }
+
+</script>
+</body>
+
+
+
+</html>
