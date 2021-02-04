@@ -395,6 +395,10 @@ var d = '</span></p>'
           chatBody.innerHTML += c + "Seriously...?<br>I will always try my best to tell you all I know" + d
           }
            
+else if (text.value.match(/(a girl| a boy)/)) {
+           place();
+           chatBody.innerHTML += c + "I'm a bot, I'm not gender specific" + d
+      } 
            else if (text.value.match(/(father|mother,sist|broth|son|wife|kids)/)) {
            place();
            chatBody.innerHTML += c + "Sorry, can't talk about family stuff." + d
