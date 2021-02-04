@@ -227,6 +227,9 @@ function id(x) {
 }
 write = id("write");
 text = id("text");
+text.oninput=function (){
+text.value= text.value.toLowerCase(); 
+ }
 chatBody = id("chatBody");
 start = id("start");
 mainChat = id("mainChat");
